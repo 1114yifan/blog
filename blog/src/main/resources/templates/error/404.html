@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <!--移动端的预览设置，用于适配移动端-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="/Semantic-UI-CSS-master/semantic.min.css">
+    <link rel="stylesheet" href="/css/myblog.css">
+    <title>错误404</title>
+
+</head>
+<body>
+<!-- 导航 -->
+<nav th:replace="_fragments :: menu(1)"  class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <!-- stackable 代表可堆叠 -->
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" class="active m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+            <a href="#" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+            <div class="right m-item item m-mobile-hide">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+
+</nav>
+
+
+<!--中间内容-->
+<br>
+<br>
+<br>
+<br>
+<div class="m-container-small m-padded-tb-big">
+    <div class="ui error container">
+        <div class="ui segment middle aligned">
+            <h2>错误404</h2>
+            <h4>看看是不是访问路径出错啦 (lll￢ω￢)</h4>
+
+        </div>
+    </div>
+</div>
+<div class="ui container m-container-small m-padded-tb-big m-opacity-mini">
+    <div th:text="'&lt;!--'" th:remove="tag" ></div>
+    <div th:text="'Failed Request URL : '+${url}" th:remove="tag"></div>
+    <div th:text="'Exception message :'+${exception.message}" th:remove="tag"></div>
+    <ul  th:remove="tag">
+        <li th:each="st : ${exception.stackTrace}" th:remove="tag"></li>
+        <span th:utext="${st}" th:remove="tag"></span>
+    </ul>
+    <div th:text="'--&gt;'" th:remove="tag" ></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<!-- 底部footer -->
+<footer th:replace="_fragments :: footer"  class="ui inverted vertical segment m-padded-tb-massive">
+</footer>
+
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+<!--/*/</th:block>/*/-->
+
+<!-- 开关按钮 -->
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item ').toggleClass('m-mobile-hide');
+    });
+</script>
+</body>
+</html>

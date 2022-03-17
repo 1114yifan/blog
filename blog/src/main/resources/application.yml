@@ -1,0 +1,16 @@
+# 全局配置
+
+spring:
+  profiles:
+    active: dev
+  jpa:
+    open-in-view: false
+#    指定配置文件位置
+  messages:
+    basename: i18n/messages
+
+# 全局变量
+comment.avatar: /images/avatar.png;
+
+
+

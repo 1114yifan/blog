@@ -1,0 +1,40 @@
+# 开发环境
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: root
+    # 数据库地址
+    url: jdbc:mysql://localhost:3306/myblog?serverTimezone=Asia/Shanghai
+    # 配置数据库驱动，jdbc
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 配置数据库连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+
+# 分页插件
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params:
+
+logging:
+  level:
+    root: info
+    com.yf.blog: debug
+  file:
+    name: log/blog-dev.log
+
+mybatis:
+  # 配置mapper文件放在resource下的mapper中
+  mapper-locations: classpath:mapper/*.xml
+  # 配置实体扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.yf.blog.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  # 配置mybatis日志打印
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

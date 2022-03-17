@@ -1,0 +1,776 @@
+2022-02-19 13:32:12.411  INFO 3396 --- [main] com.yf.blog.BlogApplication              : Starting BlogApplication on DESKTOP-D69M3AL with PID 3396 (D:\BeiWo\Demo\springboot\blog\target\classes started by 86138 in D:\BeiWo\Demo\springboot\blog)
+2022-02-19 13:32:12.431 DEBUG 3396 --- [main] com.yf.blog.BlogApplication              : Running with Spring Boot v2.3.7.RELEASE, Spring v5.2.12.RELEASE
+2022-02-19 13:32:12.431  INFO 3396 --- [main] com.yf.blog.BlogApplication              : The following profiles are active: dev
+2022-02-19 13:32:13.971  INFO 3396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-19 13:32:14.001  INFO 3396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 JPA repository interfaces.
+2022-02-19 13:32:15.010  INFO 3396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-02-19 13:32:15.020  INFO 3396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-02-19 13:32:15.020  INFO 3396 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-02-19 13:32:15.150  INFO 3396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-02-19 13:32:15.150  INFO 3396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2659 ms
+2022-02-19 13:32:15.200  INFO 3396 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-02-19 13:32:15.350  INFO 3396 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-02-19 13:32:16.431  INFO 3396 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-19 13:32:16.491  INFO 3396 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.25.Final
+2022-02-19 13:32:16.761  INFO 3396 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-19 13:32:16.891  INFO 3396 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-19 13:32:17.091  INFO 3396 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-19 13:32:17.102  INFO 3396 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-19 13:32:17.960  INFO 3396 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-02-19 13:32:18.060  INFO 3396 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-02-19 13:32:18.530  INFO 3396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-02-19 13:32:18.550  INFO 3396 --- [main] com.yf.blog.BlogApplication              : Started BlogApplication in 6.855 seconds (JVM running for 8.603)
+2022-02-19 13:32:45.384  INFO 3396 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-19 13:32:45.385  INFO 3396 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-02-19 13:32:45.406  INFO 3396 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 21 ms
+2022-02-19 13:32:45.447  INFO 3396 --- [http-nio-8080-exec-1] com.yf.blog.aspect.LogAspect             : Request : {url='/', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.index', args=[{}, 1]}
+2022-02-19 13:32:45.480 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getAllFirstPageBlog   : ==>  Preparing: select b.id, b.title, b.first_picture, b.published, b.views, b.comment_count, b.update_time, b.description, t.name, u.nickname, u.avatar from t_blog b, t_type t, t_user u where b.type_id = t.id and u.id = b.user_id order by b.update_time desc
+2022-02-19 13:32:45.495 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getAllFirstPageBlog   : ==> Parameters: 
+2022-02-19 13:32:45.606 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getAllFirstPageBlog   : <==      Total: 2
+2022-02-19 13:32:45.608 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:32:45.608 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:32:45.612 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:32:45.615 DEBUG 3396 --- [http-nio-8080-exec-1] c.yf.blog.mapper.TypeMapper.getBlogType  : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title, b.type_id from t_type t, t_blog b where t.id = b.type_id
+2022-02-19 13:32:45.615 DEBUG 3396 --- [http-nio-8080-exec-1] c.yf.blog.mapper.TypeMapper.getBlogType  : ==> Parameters: 
+2022-02-19 13:32:45.617 DEBUG 3396 --- [http-nio-8080-exec-1] c.yf.blog.mapper.TypeMapper.getBlogType  : <==      Total: 2
+2022-02-19 13:32:45.618  INFO 3396 --- [http-nio-8080-exec-1] com.yf.blog.aspect.LogAspect             : Result : index
+2022-02-19 13:32:46.566  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:32:46.567 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:32:46.567 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:32:46.572 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:32:46.573  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:32:57.642  INFO 3396 --- [http-nio-8080-exec-3] com.yf.blog.aspect.LogAspect             : Request : {url='/blog/66', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.blog', args=[66, {}]}
+2022-02-19 13:32:57.844 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.mapper.BlogMapper.getDetailedBlog  : ==>  Preparing: select b.id bid,b.first_picture,b.flag,b.title,b.content,b.views,b.comment_count,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,t.name from myblog.t_blog b,myblog.t_user u, myblog.t_type t where b.user_id = u.id and b.type_id = t.id and b.id = ?
+2022-02-19 13:32:57.845 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.mapper.BlogMapper.getDetailedBlog  : ==> Parameters: 66(Long)
+2022-02-19 13:32:57.848 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.mapper.BlogMapper.getDetailedBlog  : <==      Total: 1
+2022-02-19 13:32:57.891 DEBUG 3396 --- [http-nio-8080-exec-3] c.yf.blog.mapper.BlogMapper.updateViews  : ==>  Preparing: update t_blog b set b.views = b.views + 1 where b.id = ?
+2022-02-19 13:32:57.891 DEBUG 3396 --- [http-nio-8080-exec-3] c.yf.blog.mapper.BlogMapper.updateViews  : ==> Parameters: 66(Long)
+2022-02-19 13:32:57.892 DEBUG 3396 --- [http-nio-8080-exec-3] c.yf.blog.mapper.BlogMapper.updateViews  : <==    Updates: 1
+2022-02-19 13:32:57.893 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getCommentCountById   : ==>  Preparing: update t_blog b set b.comment_count = ( select count(*) from t_comment c where c.blog_id = ? and b.id = ? ) where b.id = ?
+2022-02-19 13:32:57.893 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getCommentCountById   : ==> Parameters: 66(Long), 66(Long), 66(Long)
+2022-02-19 13:32:57.913 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getCommentCountById   : <==    Updates: 1
+2022-02-19 13:32:57.983 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNull       : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.984 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNull       : ==> Parameters: 66(Long), -1(Long)
+2022-02-19 13:32:57.987 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNull       : <==      Total: 4
+2022-02-19 13:32:57.987 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.988 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 28(Long)
+2022-02-19 13:32:57.989 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 2
+2022-02-19 13:32:57.990 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.990 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 29(Long)
+2022-02-19 13:32:57.991 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 0
+2022-02-19 13:32:57.992 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.992 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 30(Long)
+2022-02-19 13:32:57.994 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 1
+2022-02-19 13:32:57.994 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.995 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 31(Long)
+2022-02-19 13:32:57.996 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 1
+2022-02-19 13:32:57.997 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.997 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 33(Long)
+2022-02-19 13:32:57.998 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 0
+2022-02-19 13:32:57.998 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:57.999 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 32(Long)
+2022-02-19 13:32:58.000 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 1
+2022-02-19 13:32:58.000 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:58.000 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 37(Long)
+2022-02-19 13:32:58.001 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 0
+2022-02-19 13:32:58.002 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:58.003 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 35(Long)
+2022-02-19 13:32:58.005 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 0
+2022-02-19 13:32:58.005 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:32:58.006 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 36(Long)
+2022-02-19 13:32:58.007 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 0
+2022-02-19 13:32:58.007  INFO 3396 --- [http-nio-8080-exec-3] com.yf.blog.aspect.LogAspect             : Result : blog
+2022-02-19 13:32:58.667  INFO 3396 --- [http-nio-8080-exec-2] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:32:58.668 DEBUG 3396 --- [http-nio-8080-exec-2] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:32:58.668 DEBUG 3396 --- [http-nio-8080-exec-2] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:32:58.671 DEBUG 3396 --- [http-nio-8080-exec-2] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:32:58.672  INFO 3396 --- [http-nio-8080-exec-2] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:08.951  INFO 3396 --- [http-nio-8080-exec-8] com.yf.blog.aspect.LogAspect             : Request : {url='/types/-1', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.TypeShowController.types', args=[{}, 1, -1]}
+2022-02-19 13:33:08.954 DEBUG 3396 --- [http-nio-8080-exec-8] c.yf.blog.mapper.TypeMapper.getBlogType  : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title, b.type_id from t_type t, t_blog b where t.id = b.type_id
+2022-02-19 13:33:08.955 DEBUG 3396 --- [http-nio-8080-exec-8] c.yf.blog.mapper.TypeMapper.getBlogType  : ==> Parameters: 
+2022-02-19 13:33:08.956 DEBUG 3396 --- [http-nio-8080-exec-8] c.yf.blog.mapper.TypeMapper.getBlogType  : <==      Total: 2
+2022-02-19 13:33:08.956 DEBUG 3396 --- [http-nio-8080-exec-8] c.yf.blog.mapper.BlogMapper.getByTypeId  : ==>  Preparing: select b.id,b.title,b.first_picture,b.views,b.comment_count,b.update_time,b.description, t.name, u.nickname,u.avatar from t_blog b, t_type t, t_user u where b.type_id = t.id and u.id = b.user_id and type_id = ? order by b.update_time desc;
+2022-02-19 13:33:08.957 DEBUG 3396 --- [http-nio-8080-exec-8] c.yf.blog.mapper.BlogMapper.getByTypeId  : ==> Parameters: 61(Long)
+2022-02-19 13:33:08.958 DEBUG 3396 --- [http-nio-8080-exec-8] c.yf.blog.mapper.BlogMapper.getByTypeId  : <==      Total: 2
+2022-02-19 13:33:08.958  INFO 3396 --- [http-nio-8080-exec-8] com.yf.blog.aspect.LogAspect             : Result : types
+2022-02-19 13:33:09.365  INFO 3396 --- [http-nio-8080-exec-1] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:09.405 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.B.getRecommendedBlog_COUNT       : ==>  Preparing: SELECT count(0) FROM t_blog WHERE t_blog.recommend = true LIMIT 4
+2022-02-19 13:33:09.405 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.B.getRecommendedBlog_COUNT       : ==> Parameters: 
+2022-02-19 13:33:09.406 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.B.getRecommendedBlog_COUNT       : <==      Total: 1
+2022-02-19 13:33:09.408 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4; LIMIT ?
+2022-02-19 13:33:09.408 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 10(Integer)
+2022-02-19 13:33:09.488 ERROR 3396 --- [http-nio-8080-exec-1] c.y.b.h.ControllerExceptionHandler       : Request URL : /footer/newblog, Exception : {}
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+### The error may exist in file [D:\BeiWo\Demo\springboot\blog\target\classes\mapper\BlogMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4; LIMIT ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at com.sun.proxy.$Proxy86.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy87.getRecommendedBlog(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy88.getRecommendedBlog(Unknown Source)
+	at com.yf.blog.service.impl.BlogServiceImpl.getRecommendedBlog(BlogServiceImpl.java:73)
+	at com.yf.blog.service.impl.BlogServiceImpl$$FastClassBySpringCGLIB$$1676eb96.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687)
+	at com.yf.blog.service.impl.BlogServiceImpl$$EnhancerBySpringCGLIB$$40ef2826.getRecommendedBlog(<generated>)
+	at com.yf.blog.controller.IndexController.newblogs(IndexController.java:82)
+	at com.yf.blog.controller.IndexController$$FastClassBySpringCGLIB$$1b353a14.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterAdvice.invoke(AspectJAfterAdvice.java:47)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.yf.blog.controller.IndexController$$EnhancerBySpringCGLIB$$5b8d365f.newblogs(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497)
+	at jdk.internal.reflect.GeneratedMethodAccessor74.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy117.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.util.ExecutorUtil.pageQuery(ExecutorUtil.java:177)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:104)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy115.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at jdk.internal.reflect.GeneratedMethodAccessor86.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 93 common frames omitted
+
+2022-02-19 13:33:09.829  INFO 3396 --- [http-nio-8080-exec-5] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:09.829 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:09.829 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:09.832 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:09.833  INFO 3396 --- [http-nio-8080-exec-5] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:14.702  INFO 3396 --- [http-nio-8080-exec-6] com.yf.blog.aspect.LogAspect             : Request : {url='/archives', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.ArchivesController.archives', args=[{}]}
+2022-02-19 13:33:14.704 DEBUG 3396 --- [http-nio-8080-exec-6] c.y.b.mapper.BlogMapper.getAllBlogQuery  : ==>  Preparing: select b.id,b.title,b.update_time,b.recommend,b.published,b.type_id,t.id,t.name from t_blog b left outer join t_type t on b.type_id = t.id order by b.update_time desc
+2022-02-19 13:33:14.705 DEBUG 3396 --- [http-nio-8080-exec-6] c.y.b.mapper.BlogMapper.getAllBlogQuery  : ==> Parameters: 
+2022-02-19 13:33:14.707 DEBUG 3396 --- [http-nio-8080-exec-6] c.y.b.mapper.BlogMapper.getAllBlogQuery  : <==      Total: 2
+2022-02-19 13:33:14.707  INFO 3396 --- [http-nio-8080-exec-6] com.yf.blog.aspect.LogAspect             : Result : archives
+2022-02-19 13:33:15.064  INFO 3396 --- [http-nio-8080-exec-9] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:15.064 DEBUG 3396 --- [http-nio-8080-exec-9] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:15.065 DEBUG 3396 --- [http-nio-8080-exec-9] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:15.067 DEBUG 3396 --- [http-nio-8080-exec-9] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:15.067  INFO 3396 --- [http-nio-8080-exec-9] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:19.209  INFO 3396 --- [http-nio-8080-exec-10] com.yf.blog.aspect.LogAspect             : Request : {url='/about', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.AboutController.archives', args=[]}
+2022-02-19 13:33:19.211  INFO 3396 --- [http-nio-8080-exec-10] com.yf.blog.aspect.LogAspect             : Result : about
+2022-02-19 13:33:19.573  INFO 3396 --- [http-nio-8080-exec-2] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:19.573 DEBUG 3396 --- [http-nio-8080-exec-2] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:19.574 DEBUG 3396 --- [http-nio-8080-exec-2] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:19.576 DEBUG 3396 --- [http-nio-8080-exec-2] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:19.576  INFO 3396 --- [http-nio-8080-exec-2] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:20.810  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Request : {url='/', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.index', args=[{}, 1]}
+2022-02-19 13:33:20.811 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getAllFirstPageBlog   : ==>  Preparing: select b.id, b.title, b.first_picture, b.published, b.views, b.comment_count, b.update_time, b.description, t.name, u.nickname, u.avatar from t_blog b, t_type t, t_user u where b.type_id = t.id and u.id = b.user_id order by b.update_time desc
+2022-02-19 13:33:20.811 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getAllFirstPageBlog   : ==> Parameters: 
+2022-02-19 13:33:20.813 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getAllFirstPageBlog   : <==      Total: 2
+2022-02-19 13:33:20.813 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:20.814 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:20.817 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:20.817 DEBUG 3396 --- [http-nio-8080-exec-4] c.yf.blog.mapper.TypeMapper.getBlogType  : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title, b.type_id from t_type t, t_blog b where t.id = b.type_id
+2022-02-19 13:33:20.817 DEBUG 3396 --- [http-nio-8080-exec-4] c.yf.blog.mapper.TypeMapper.getBlogType  : ==> Parameters: 
+2022-02-19 13:33:20.818 DEBUG 3396 --- [http-nio-8080-exec-4] c.yf.blog.mapper.TypeMapper.getBlogType  : <==      Total: 2
+2022-02-19 13:33:20.819  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Result : index
+2022-02-19 13:33:21.102  INFO 3396 --- [http-nio-8080-exec-8] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:21.103 DEBUG 3396 --- [http-nio-8080-exec-8] c.y.b.m.B.getRecommendedBlog_COUNT       : ==>  Preparing: SELECT count(0) FROM t_blog WHERE t_blog.recommend = true LIMIT 4
+2022-02-19 13:33:21.103 DEBUG 3396 --- [http-nio-8080-exec-8] c.y.b.m.B.getRecommendedBlog_COUNT       : ==> Parameters: 
+2022-02-19 13:33:21.104 DEBUG 3396 --- [http-nio-8080-exec-8] c.y.b.m.B.getRecommendedBlog_COUNT       : <==      Total: 1
+2022-02-19 13:33:21.105 DEBUG 3396 --- [http-nio-8080-exec-8] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4; LIMIT ?
+2022-02-19 13:33:21.105 DEBUG 3396 --- [http-nio-8080-exec-8] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 10(Integer)
+2022-02-19 13:33:21.107 ERROR 3396 --- [http-nio-8080-exec-8] c.y.b.h.ControllerExceptionHandler       : Request URL : /footer/newblog, Exception : {}
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+### The error may exist in file [D:\BeiWo\Demo\springboot\blog\target\classes\mapper\BlogMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4; LIMIT ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at com.sun.proxy.$Proxy86.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy87.getRecommendedBlog(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy88.getRecommendedBlog(Unknown Source)
+	at com.yf.blog.service.impl.BlogServiceImpl.getRecommendedBlog(BlogServiceImpl.java:73)
+	at com.yf.blog.service.impl.BlogServiceImpl$$FastClassBySpringCGLIB$$1676eb96.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687)
+	at com.yf.blog.service.impl.BlogServiceImpl$$EnhancerBySpringCGLIB$$40ef2826.getRecommendedBlog(<generated>)
+	at com.yf.blog.controller.IndexController.newblogs(IndexController.java:82)
+	at com.yf.blog.controller.IndexController$$FastClassBySpringCGLIB$$1b353a14.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterAdvice.invoke(AspectJAfterAdvice.java:47)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.yf.blog.controller.IndexController$$EnhancerBySpringCGLIB$$5b8d365f.newblogs(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497)
+	at jdk.internal.reflect.GeneratedMethodAccessor74.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy117.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.util.ExecutorUtil.pageQuery(ExecutorUtil.java:177)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:104)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy115.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at jdk.internal.reflect.GeneratedMethodAccessor86.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 93 common frames omitted
+
+2022-02-19 13:33:21.443  INFO 3396 --- [http-nio-8080-exec-1] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:21.444 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:21.444 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:21.446 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:21.446  INFO 3396 --- [http-nio-8080-exec-1] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:22.194  INFO 3396 --- [http-nio-8080-exec-5] com.yf.blog.aspect.LogAspect             : Request : {url='/about', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.AboutController.archives', args=[]}
+2022-02-19 13:33:22.194  INFO 3396 --- [http-nio-8080-exec-5] com.yf.blog.aspect.LogAspect             : Result : about
+2022-02-19 13:33:22.476  INFO 3396 --- [http-nio-8080-exec-6] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:22.477 DEBUG 3396 --- [http-nio-8080-exec-6] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:22.477 DEBUG 3396 --- [http-nio-8080-exec-6] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:22.480 DEBUG 3396 --- [http-nio-8080-exec-6] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:22.481  INFO 3396 --- [http-nio-8080-exec-6] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:26.075  INFO 3396 --- [http-nio-8080-exec-3] com.yf.blog.aspect.LogAspect             : Request : {url='/', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.index', args=[{}, 1]}
+2022-02-19 13:33:26.076 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getAllFirstPageBlog   : ==>  Preparing: select b.id, b.title, b.first_picture, b.published, b.views, b.comment_count, b.update_time, b.description, t.name, u.nickname, u.avatar from t_blog b, t_type t, t_user u where b.type_id = t.id and u.id = b.user_id order by b.update_time desc
+2022-02-19 13:33:26.076 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getAllFirstPageBlog   : ==> Parameters: 
+2022-02-19 13:33:26.078 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getAllFirstPageBlog   : <==      Total: 2
+2022-02-19 13:33:26.079 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:26.079 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:26.081 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:26.081 DEBUG 3396 --- [http-nio-8080-exec-3] c.yf.blog.mapper.TypeMapper.getBlogType  : ==>  Preparing: select t.id tid, t.name, b.id bid, b.title, b.type_id from t_type t, t_blog b where t.id = b.type_id
+2022-02-19 13:33:26.081 DEBUG 3396 --- [http-nio-8080-exec-3] c.yf.blog.mapper.TypeMapper.getBlogType  : ==> Parameters: 
+2022-02-19 13:33:26.083 DEBUG 3396 --- [http-nio-8080-exec-3] c.yf.blog.mapper.TypeMapper.getBlogType  : <==      Total: 2
+2022-02-19 13:33:26.083  INFO 3396 --- [http-nio-8080-exec-3] com.yf.blog.aspect.LogAspect             : Result : index
+2022-02-19 13:33:26.338  INFO 3396 --- [http-nio-8080-exec-9] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:26.339 DEBUG 3396 --- [http-nio-8080-exec-9] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:26.339 DEBUG 3396 --- [http-nio-8080-exec-9] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:26.342 DEBUG 3396 --- [http-nio-8080-exec-9] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:26.342  INFO 3396 --- [http-nio-8080-exec-9] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:33:40.624  INFO 3396 --- [http-nio-8080-exec-10] com.yf.blog.aspect.LogAspect             : Request : {url='/blog/66', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.blog', args=[66, {}]}
+2022-02-19 13:33:40.626 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.mapper.BlogMapper.getDetailedBlog  : ==>  Preparing: select b.id bid,b.first_picture,b.flag,b.title,b.content,b.views,b.comment_count,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,t.name from myblog.t_blog b,myblog.t_user u, myblog.t_type t where b.user_id = u.id and b.type_id = t.id and b.id = ?
+2022-02-19 13:33:40.626 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.mapper.BlogMapper.getDetailedBlog  : ==> Parameters: 66(Long)
+2022-02-19 13:33:40.632 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.mapper.BlogMapper.getDetailedBlog  : <==      Total: 1
+2022-02-19 13:33:40.640 DEBUG 3396 --- [http-nio-8080-exec-10] c.yf.blog.mapper.BlogMapper.updateViews  : ==>  Preparing: update t_blog b set b.views = b.views + 1 where b.id = ?
+2022-02-19 13:33:40.641 DEBUG 3396 --- [http-nio-8080-exec-10] c.yf.blog.mapper.BlogMapper.updateViews  : ==> Parameters: 66(Long)
+2022-02-19 13:33:40.642 DEBUG 3396 --- [http-nio-8080-exec-10] c.yf.blog.mapper.BlogMapper.updateViews  : <==    Updates: 1
+2022-02-19 13:33:40.643 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.BlogMapper.getCommentCountById   : ==>  Preparing: update t_blog b set b.comment_count = ( select count(*) from t_comment c where c.blog_id = ? and b.id = ? ) where b.id = ?
+2022-02-19 13:33:40.643 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.BlogMapper.getCommentCountById   : ==> Parameters: 66(Long), 66(Long), 66(Long)
+2022-02-19 13:33:40.644 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.BlogMapper.getCommentCountById   : <==    Updates: 1
+2022-02-19 13:33:40.830 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNull       : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.831 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNull       : ==> Parameters: 66(Long), -1(Long)
+2022-02-19 13:33:40.832 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNull       : <==      Total: 4
+2022-02-19 13:33:40.834 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.834 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 28(Long)
+2022-02-19 13:33:40.836 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 2
+2022-02-19 13:33:40.837 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.837 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 29(Long)
+2022-02-19 13:33:40.839 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 0
+2022-02-19 13:33:40.839 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.839 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 30(Long)
+2022-02-19 13:33:40.842 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 1
+2022-02-19 13:33:40.843 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.843 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 31(Long)
+2022-02-19 13:33:40.845 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 1
+2022-02-19 13:33:40.845 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.846 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 33(Long)
+2022-02-19 13:33:40.847 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 0
+2022-02-19 13:33:40.847 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.848 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 32(Long)
+2022-02-19 13:33:40.850 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 1
+2022-02-19 13:33:40.851 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.851 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : ==> Parameters: 66(Long), 37(Long)
+2022-02-19 13:33:40.852 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdAndReplayId        : <==      Total: 0
+2022-02-19 13:33:40.853 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.853 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 35(Long)
+2022-02-19 13:33:40.854 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 0
+2022-02-19 13:33:40.854 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==>  Preparing: select * from t_comment where blog_id = ? and parent_comment_id = ?
+2022-02-19 13:33:40.855 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : ==> Parameters: 66(Long), 36(Long)
+2022-02-19 13:33:40.856 DEBUG 3396 --- [http-nio-8080-exec-10] c.y.b.m.C.findByBlogIdParentIdNotNull    : <==      Total: 0
+2022-02-19 13:33:40.856  INFO 3396 --- [http-nio-8080-exec-10] com.yf.blog.aspect.LogAspect             : Result : blog
+2022-02-19 13:33:41.206  INFO 3396 --- [http-nio-8080-exec-7] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:33:41.206 DEBUG 3396 --- [http-nio-8080-exec-7] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:33:41.206 DEBUG 3396 --- [http-nio-8080-exec-7] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:33:41.208 DEBUG 3396 --- [http-nio-8080-exec-7] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:33:41.208  INFO 3396 --- [http-nio-8080-exec-7] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:36:17.443  WARN 3396 --- [http-nio-8080-exec-3] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [260] milliseconds.
+2022-02-19 13:36:17.510 ERROR 3396 --- [http-nio-8080-exec-3] c.a.druid.pool.DruidAbstractDataSource   : discard long time none received connection. , jdbcUrl : jdbc:mysql://localhost:3306/myblog?serverTimezone=Asia/Shanghai, jdbcUrl : jdbc:mysql://localhost:3306/myblog?serverTimezone=Asia/Shanghai, lastPacketReceivedIdleMillis : 156273
+2022-02-19 13:36:17.528 DEBUG 3396 --- [http-nio-8080-exec-3] .y.b.m.U.findByUsernameAndPassword_COUNT : ==>  Preparing: SELECT count(0) FROM t_user WHERE username = ? AND password = ?
+2022-02-19 13:36:17.529 DEBUG 3396 --- [http-nio-8080-exec-3] .y.b.m.U.findByUsernameAndPassword_COUNT : ==> Parameters: yifan(String), d6ef5f7fa914c19931a55bb262ec879c(String)
+2022-02-19 13:36:17.530 DEBUG 3396 --- [http-nio-8080-exec-3] .y.b.m.U.findByUsernameAndPassword_COUNT : <==      Total: 1
+2022-02-19 13:36:17.531 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.U.findByUsernameAndPassword      : ==>  Preparing: select * from t_user where username = ? and password = ?; LIMIT ?
+2022-02-19 13:36:17.531 DEBUG 3396 --- [http-nio-8080-exec-3] c.y.b.m.U.findByUsernameAndPassword      : ==> Parameters: yifan(String), d6ef5f7fa914c19931a55bb262ec879c(String), 10(Integer)
+2022-02-19 13:36:17.532 ERROR 3396 --- [http-nio-8080-exec-3] c.y.b.h.ControllerExceptionHandler       : Request URL : /admin/login, Exception : {}
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 2
+### The error may exist in file [D:\BeiWo\Demo\springboot\blog\target\classes\mapper\UserMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select * from t_user         where username = ? and password = ?; LIMIT ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 2
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 2
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at com.sun.proxy.$Proxy86.selectOne(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:160)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:87)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy95.findByUsernameAndPassword(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy96.findByUsernameAndPassword(Unknown Source)
+	at com.yf.blog.service.impl.UserServiceImpl.checkUser(UserServiceImpl.java:21)
+	at com.yf.blog.controller.admin.LoginController.login(LoginController.java:45)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 2
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497)
+	at jdk.internal.reflect.GeneratedMethodAccessor74.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy117.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.util.ExecutorUtil.pageQuery(ExecutorUtil.java:177)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:104)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy115.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:76)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 69 common frames omitted
+
+2022-02-19 13:36:17.920  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='127.0.0.1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:36:17.921 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.B.getRecommendedBlog_COUNT       : ==>  Preparing: SELECT count(0) FROM t_blog WHERE t_blog.recommend = true LIMIT 4
+2022-02-19 13:36:17.921 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.B.getRecommendedBlog_COUNT       : ==> Parameters: 
+2022-02-19 13:36:17.922 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.B.getRecommendedBlog_COUNT       : <==      Total: 1
+2022-02-19 13:36:17.923 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4; LIMIT ?
+2022-02-19 13:36:17.923 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 10(Integer)
+2022-02-19 13:36:17.925 ERROR 3396 --- [http-nio-8080-exec-4] c.y.b.h.ControllerExceptionHandler       : Request URL : /footer/newblog, Exception : {}
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+### The error may exist in file [D:\BeiWo\Demo\springboot\blog\target\classes\mapper\BlogMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4; LIMIT ?
+### Cause: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:91)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441)
+	at com.sun.proxy.$Proxy86.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80)
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:152)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:85)
+	at com.sun.proxy.$Proxy87.getRecommendedBlog(Unknown Source)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:198)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
+	at com.sun.proxy.$Proxy88.getRecommendedBlog(Unknown Source)
+	at com.yf.blog.service.impl.BlogServiceImpl.getRecommendedBlog(BlogServiceImpl.java:73)
+	at com.yf.blog.service.impl.BlogServiceImpl$$FastClassBySpringCGLIB$$1676eb96.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:687)
+	at com.yf.blog.service.impl.BlogServiceImpl$$EnhancerBySpringCGLIB$$40ef2826.getRecommendedBlog(<generated>)
+	at com.yf.blog.controller.IndexController.newblogs(IndexController.java:82)
+	at com.yf.blog.controller.IndexController$$FastClassBySpringCGLIB$$1b353a14.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor.invoke(AfterReturningAdviceInterceptor.java:55)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.aspectj.AspectJAfterAdvice.invoke(AspectJAfterAdvice.java:47)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor.invoke(MethodBeforeAdviceInterceptor.java:56)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
+	at com.yf.blog.controller.IndexController$$EnhancerBySpringCGLIB$$5b8d365f.newblogs(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'LIMIT 10' at line 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497)
+	at jdk.internal.reflect.GeneratedMethodAccessor74.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
+	at com.sun.proxy.$Proxy117.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:64)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at com.github.pagehelper.util.ExecutorUtil.pageQuery(ExecutorUtil.java:177)
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:104)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
+	at com.sun.proxy.$Proxy115.query(Unknown Source)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140)
+	at jdk.internal.reflect.GeneratedMethodAccessor86.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427)
+	... 93 common frames omitted
+
+2022-02-19 13:36:18.382  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Request : {url='/footer/newblog', ip='127.0.0.1', classMethod='com.yf.blog.controller.IndexController.newblogs', args=[{}]}
+2022-02-19 13:36:18.382 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==>  Preparing: select * from t_blog where t_blog.recommend = true order by t_blog.update_time desc limit 4;
+2022-02-19 13:36:18.383 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : ==> Parameters: 
+2022-02-19 13:36:18.384 DEBUG 3396 --- [http-nio-8080-exec-4] c.y.b.m.BlogMapper.getRecommendedBlog    : <==      Total: 1
+2022-02-19 13:36:18.385  INFO 3396 --- [http-nio-8080-exec-4] com.yf.blog.aspect.LogAspect             : Result : _fragments :: newblogList
+2022-02-19 13:36:23.190 DEBUG 3396 --- [http-nio-8080-exec-7] c.y.b.m.U.findByUsernameAndPassword      : ==>  Preparing: select * from t_user where username = ? and password = ?;
+2022-02-19 13:36:23.190 DEBUG 3396 --- [http-nio-8080-exec-7] c.y.b.m.U.findByUsernameAndPassword      : ==> Parameters: yifan(String), d6ef5f7fa914c19931a55bb262ec879c(String)
+2022-02-19 13:36:23.191 DEBUG 3396 --- [http-nio-8080-exec-7] c.y.b.m.U.findByUsernameAndPassword      : <==      Total: 1
+2022-02-19 13:36:34.559 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.m.B.getAllBlogQuery_COUNT          : ==>  Preparing: SELECT count(0) FROM t_blog b LEFT OUTER JOIN t_type t ON b.type_id = t.id
+2022-02-19 13:36:34.560 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.m.B.getAllBlogQuery_COUNT          : ==> Parameters: 
+2022-02-19 13:36:34.561 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.m.B.getAllBlogQuery_COUNT          : <==      Total: 1
+2022-02-19 13:36:34.562 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.mapper.BlogMapper.getAllBlogQuery  : ==>  Preparing: SELECT b.id, b.title, b.update_time, b.recommend, b.published, b.type_id, t.id, t.name FROM t_blog b LEFT OUTER JOIN t_type t ON b.type_id = t.id order by update_time desc LIMIT ?
+2022-02-19 13:36:34.562 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.mapper.BlogMapper.getAllBlogQuery  : ==> Parameters: 10(Integer)
+2022-02-19 13:36:34.563 DEBUG 3396 --- [http-nio-8080-exec-5] c.y.b.mapper.BlogMapper.getAllBlogQuery  : <==      Total: 2
+2022-02-19 13:36:34.564 DEBUG 3396 --- [http-nio-8080-exec-5] c.yf.blog.mapper.TypeMapper.getAllType   : ==>  Preparing: select * from t_type
+2022-02-19 13:36:34.564 DEBUG 3396 --- [http-nio-8080-exec-5] c.yf.blog.mapper.TypeMapper.getAllType   : ==> Parameters: 
+2022-02-19 13:36:34.565 DEBUG 3396 --- [http-nio-8080-exec-5] c.yf.blog.mapper.TypeMapper.getAllType   : <==      Total: 5
+2022-02-19 13:36:47.152 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.TypeMapper.getAllType_COUNT      : ==>  Preparing: SELECT count(0) FROM t_type
+2022-02-19 13:36:47.152 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.TypeMapper.getAllType_COUNT      : ==> Parameters: 
+2022-02-19 13:36:47.154 DEBUG 3396 --- [http-nio-8080-exec-1] c.y.b.m.TypeMapper.getAllType_COUNT      : <==      Total: 1
+2022-02-19 13:36:47.155 DEBUG 3396 --- [http-nio-8080-exec-1] c.yf.blog.mapper.TypeMapper.getAllType   : ==>  Preparing: select * from t_type LIMIT ?
+2022-02-19 13:36:47.155 DEBUG 3396 --- [http-nio-8080-exec-1] c.yf.blog.mapper.TypeMapper.getAllType   : ==> Parameters: 5(Integer)
+2022-02-19 13:36:47.156 DEBUG 3396 --- [http-nio-8080-exec-1] c.yf.blog.mapper.TypeMapper.getAllType   : <==      Total: 5
