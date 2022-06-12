@@ -54,12 +54,14 @@ public class CommentServiceImpl implements CommentService {
         // 循环遍历每条顶级评论
         for (Comment comment : comments) {
             // 顶级评论id   顶级评论人大名
-            Long id = comment.getId();
-            String parentNickname = comment.getNickname();
+//            Long id = comment.getId();
+//            String parentNickname = comment.getNickname();
             // 根据评论id查询一级回复
-            List<Comment> childComments = commentMapper.findByBlogIdParentIdNotNull(blogId, id);
+//            List<Comment> childComments = commentMapper.findByBlogIdParentIdNotNull(blogId, id);
+            List<Comment> childComments = commentMapper.findByBlogIdParentIdNull(blogId, comment.getId());
             // 查询出子级评论
-            combineChildren(blogId,childComments,parentNickname);
+//            combineChildren(blogId,childComments,parentNickname);
+            recursively(comment,childComments);
             // set子级评论集合
             comment.setReplyComments(tempReplays);
             /*清空评论集合*/
@@ -74,7 +76,7 @@ public class CommentServiceImpl implements CommentService {
      * @param childComments 一级回复集合
      * @param parentNickname 父级评论人大名
      */
-    private void combineChildren(Long blogId, List<Comment> childComments, String parentNickname) {
+    /*private void combineChildren(Long blogId, List<Comment> childComments, String parentNickname) {
 
         if (childComments.size() > 0) {
             // 如果存在一级子评论吗,遍历
@@ -91,31 +93,33 @@ public class CommentServiceImpl implements CommentService {
                 recursively(blogId,childId,nickname);
             }
         }
-    }
+    }*/
 
     /**
      * 递归迭代,剥洋葱.    查询子级评论
-     * @param blogId
-     * @param childId 上级评论id
-     * @param parentNickname 上级子评论人大名
+//     * @param blogId
+//     * @param childId 上级评论id
+//     * @param parentNickname 上级子评论人大名
      */
-    private void recursively(Long blogId, Long childId, String parentNickname) {
+//    private void recursively(Long blogId, Long childId, String parentNickname) {
+    private void recursively(Comment comment, List<Comment> comments) {
         // 通过上级子评论id获取下级子级评论集合
-        List<Comment> replayComments = commentMapper.findByBlogIdAndReplayId(blogId, childId);
+//        List<Comment> replayComments = commentMapper.findByBlogIdParentIdNull(comment.getBlogId(), comment.getParentCommentId());
 
-        if (replayComments.size() > 0) {
+        if (comments.size() > 0) {
             // 如果存在子级评论,遍历
-            for (Comment replayComment : replayComments) {
+            for (Comment replayComment : comments) {
                 // 获取评论姓名
-                String nickname = replayComment.getNickname();
+//                String nickname = replayComment.getNickname();
                 // set设置上级评论姓名
-                replayComment.setParentNickname(parentNickname);
+                replayComment.setParentNickname(comment.getNickname());
                 // 获取评论id
-                Long replayId = replayComment.getId();
+//                Long replayId = replayComment.getId();
                 // 将子级评论添加到集合
                 tempReplays.add(replayComment);
                 // 递归调用剩余评论
-                recursively(blogId,replayId,nickname);
+                List<Comment> litterComment = commentMapper.findByBlogIdParentIdNull(replayComment.getBlogId(), replayComment.getId());
+                recursively(replayComment,litterComment);
             }
         }
     }

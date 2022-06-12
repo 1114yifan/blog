@@ -19,14 +19,14 @@
     </select>
 
     <!--查询一级回复-->
-    <select id="findByBlogIdParentIdNotNull" resultType="com.yf.blog.entity.Comment">
+    <!--<select id="findByBlogIdParentIdNotNull" resultType="com.yf.blog.entity.Comment">
         select * from t_comment
         where blog_id = #{blogId} and parent_comment_id = #{id}
-    </select>
+    </select>-->
 
     <!--查询二级回复-->
-    <select id="findByBlogIdAndReplayId" resultType="com.yf.blog.entity.Comment">
+    <!--<select id="findByBlogIdAndReplayId" resultType="com.yf.blog.entity.Comment">
         select * from t_comment
         where blog_id = #{blogId} and parent_comment_id = #{childId}
-    </select>
+    </select>-->
 </mapper>
